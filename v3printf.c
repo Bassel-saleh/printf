@@ -15,7 +15,7 @@ void print_dec(va_list var)
  */
 int _printf(const char *format, ...)
 {
-	int i, count;
+	int i, j, count;
 	va_list var;
 
 	datatype type[] = {
@@ -25,13 +25,19 @@ int _printf(const char *format, ...)
 		{'\0', 0}
 	};
 	va_start(var, format);
+	j = 0;
 	count = 0;
-	while (*format)
+	while (format && format[j])
 	{
-		if (*format == '%')
+		if (format[j] != '%')
 		{
-			format++;
-			if (*format == '%')
+			_putchar(format[j]);
+			count++;
+		}
+		else
+		{
+			j++;
+			if (format[j] == '%')
 			{
 				_putchar('%');
 				count++;
@@ -40,23 +46,18 @@ int _printf(const char *format, ...)
 			{
 				i = 0;
 				while (type[i].choice)
-				{
-					if (type[i].choice == *format)
 					{
-						type[i].f(var);
-						count++;
-						break;
+						if (type[i].choice == format[j])
+						{
+							type[i].f(var);
+							count++;
+							break;
+						}
+						i++;
 					}
-					i++;
-				}
 			}
 		}
-		else
-		{
-			_putchar(*format);
-			count++;
-		}
-	format++;
+		j++;
 	}
 	va_end(var);
 	return (count);
