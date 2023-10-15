@@ -40,7 +40,7 @@ void _handle_percent(const char **format, va_list var, int *count)
 	(*format)++;
 	if (**format == '%')
 	{
-		/* (*count)++; */
+		*count ++;
 		_putchar('%');
 	}
 	else
@@ -53,10 +53,9 @@ void _handle_percent(const char **format, va_list var, int *count)
  * @var: The va_list to access arguments
  * Return: Number of characters printed
  */
-void _process_format(const char **format, va_list var, int* count)
+void _process_format(const char **format, va_list var, int *count)
 {
 	int i;
-	char *str;
 
 	datatype type[] = {
 		{'c', print_char},
@@ -69,12 +68,6 @@ void _process_format(const char **format, va_list var, int* count)
 	{
 		if (type[i].choice == **format)
 		{
-			if (type[i].choice == 's')
-			{
-				str = va_arg(var, char *);
-				if (str)
-					(*count) += _strlen(str);
-			}
 			type[i].f(var);
 			(*count)++;
 			return;
