@@ -52,9 +52,9 @@ void _process_format(const char **format, va_list var, int *count)
 
 	switch (spec)
 	{
-		/*case 'c':
+		case 'c':
 			*count += print_char(var);
-			break;*/
+			break;
 		case 's':
 			*count += print_str(var);
 			break;
