@@ -53,7 +53,7 @@ void _handle_percent(const char **format, va_list var, int *count)
  * @var: The va_list to access arguments
  * Return: Number of characters printed
  */
-void _process_format(const char **format, va_list var, int* count)
+void _process_format(const char **format, va_list var, int * count)
 {
 	int i;
 	char *str;
@@ -74,10 +74,13 @@ void _process_format(const char **format, va_list var, int* count)
 				str = va_arg(var, char *);
 				if (str)
 					(*count) += _strlen(str);
+				else
+				{
+					type[i].f(var);
+					(*count)++;
+				}
+				return;
 			}
-			type[i].f(var);
-			(*count)++;
-			return;
 		}
 		i++;
 	}
