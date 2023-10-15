@@ -10,8 +10,7 @@ int print_char(va_list var)
 	int c;
 
 	c = va_arg(var, int);
-	if (c != 0)
-		_putchar(c);
+	_putchar(c);
 	_putchar('\0');
 	return (1);
 }
