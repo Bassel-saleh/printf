@@ -57,7 +57,8 @@ void _process_format(const char **format, va_list var, int *count)
 		{'u', print_uint},
 		{'o', print_oct},
 		{'x', print_hex},
-		{'X', print_hex},
+		{'X', print_HEX},
+		{'p', print_pointer},
 		{'\0', 0}
 	};
 	for (i = 0; type[i].choice != '\0'; i++)

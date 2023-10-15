@@ -45,11 +45,23 @@ int print_oct(va_list var)
 }
 
 /**
- * print_hex - Handle %x and %X format specifiers
+ * print_hex - Handle %x format specifiers
  * @var: va_list containing the unsigned integer argument
  * Return: Number of characters printed
  */
 int print_hex(va_list var)
+{
+	unsigned int num = va_arg(var, unsigned int);
+
+	return print_hexadecimal(num, 0);
+}
+
+/**
+ * print_hex - Handle %X format specifiers
+ * @var: va_list containing the unsigned integer argument
+ * Return: Number of characters printed
+ */
+int print_HEX(va_list var)
 {
 	unsigned int num = va_arg(var, unsigned int);
 
