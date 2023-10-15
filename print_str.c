@@ -2,20 +2,14 @@
 #include <stdarg.h>
 /**
  */
-int print_str(va_list var)
-{
-	char *str;
-	int a = 0;
-	
-	str = va_arg(var, char *);
-	if (str)
-	{
-		while (*str)
-		{
-			_putchar(*str);
-			str++;
-			a++;
-		}
-	}
-	return (a);
+int print_str(va_list var) {
+    char *str = va_arg(var, char *);
+    int count = 0;
+
+    while (str && *str) {
+        count += _putchar(*str);
+        str++;
+    }
+
+    return count;
 }

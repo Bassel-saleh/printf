@@ -4,22 +4,15 @@
  * @var: va_list containing the integer argument
  * Return: Number of characters printed
  */
-int print_int(va_list var)
-{
+int print_int(va_list var) {
     int num = va_arg(var, int);
     int count = 0;
-    
-    if (num < 0)
-    {
-        _putchar('-');
-        count++;
-        num = -num;
-    }
 
+    num < 0 ? (count += _putchar('-'), num = -num) : 0;
     count += print_dec(num);
-    return (count);
-}
 
+    return count;
+}
 /**
  * print_uint - Handle %u format specifier
  * @var: va_list containing the unsigned integer argument
