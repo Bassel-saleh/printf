@@ -17,7 +17,7 @@ int print_dec(int n);
 int print_octal(unsigned int n);
 int print_hexadecimal(unsigned int n, int uppercase);
 int print_octal_helper(unsigned int n);
-int print_unsigned(unsigned int n);
+int print_unsign(unsigned int n);
 int print_HEX(va_list var);
 int print_pointer(va_list var);
 int print_hexadecimal_padded(unsigned long n, int width);

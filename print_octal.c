@@ -21,6 +21,9 @@ int print_octal(unsigned int n)
 }
 
 /**
+ * print_octal_helper - helps print_octal print correctly
+ * @n: is the number to be modified
+ * Return: count
  */
 int print_octal_helper(unsigned int n)
 {

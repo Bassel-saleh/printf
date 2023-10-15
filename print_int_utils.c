@@ -76,17 +76,17 @@ int print_hexadecimal(unsigned int n, int uppercase)
 }
 
 /**
- * print_unsigned - Print an unsigned integer
+ * print_unsign - Print an unsigned integer
  * @n: The unsigned integer to be printed
  * Return: Number of characters printed
  */
-int print_unsigned(unsigned int n)
+int print_unsign(unsigned int n)
 {
 	int count = 0;
 
 	if (n / 10 != 0)
 	{
-		count += print_unsigned(n / 10);
+		count += print_unsign(n / 10);
 	}
 	_putchar((n % 10) + '0');
 	count++;

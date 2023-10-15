@@ -23,7 +23,7 @@ int print_uint(va_list var)
 {
 	unsigned int num = va_arg(var, unsigned int);
 
-	return (print_unsigned(num));
+	return (print_unsign(num));
 }
 
 /**

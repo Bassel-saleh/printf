@@ -20,21 +20,22 @@ int print_pointer(va_list var)
 		width++;
 	}
 	count += print_hexadecimal_padded((unsigned long)ptr, width);
-	return count;
+	return (count);
 }
 
 /**
- * print_hexadecimal_padded - Print an unsigned integer in hexadecimal format with padding
+ * print_hexadecimal_padded - Print an unsigned integer
+ * in hexadecimal format with padding
  * @n: The unsigned integer to be printed
  * @width: Minimum width of the output
  * Return: Number of characters printed
  */
 int print_hexadecimal_padded(unsigned long n, int width)
 {
-    int count = 0;
-    char hex_digits[] = "0123456789abcdef";
-    char buffer[32];
-    int zerostoadd, j, i = 0;
+	int count = 0;
+	char hex_digits[] = "0123456789abcdef";
+	char buffer[32];
+	int zerostoadd, j, i = 0;
 
 	if (n == 0)
 	{
