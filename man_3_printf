@@ -1,4 +1,4 @@
-.TH _printf
+TH _PRINTF 3
 .SH NAME
 test.sh \- formatted output conversion
 .SH SYNOPSIS
