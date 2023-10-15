@@ -13,6 +13,7 @@ int print_int(va_list var)
 	count += print_dec(num);
 	return (count);
 }
+
 /**
  * print_uint - Handle %u format specifier
  * @var: va_list containing the unsigned integer argument
@@ -20,9 +21,9 @@ int print_int(va_list var)
  */
 int print_uint(va_list var)
 {
-    unsigned int num = va_arg(var, unsigned int);
+	unsigned int num = va_arg(var, unsigned int);
 
-    return (print_unsigned(num));
+	return (print_unsigned(num));
 }
 
 /**
@@ -32,9 +33,9 @@ int print_uint(va_list var)
  */
 int print_oct(va_list var)
 {
-    unsigned int num = va_arg(var, unsigned int);
+	unsigned int num = va_arg(var, unsigned int);
 
-    return (print_octal(num));
+	return (print_octal(num));
 }
 
 /**
@@ -46,11 +47,11 @@ int print_hex(va_list var)
 {
 	unsigned int num = va_arg(var, unsigned int);
 
-	return print_hexadecimal(num, 0);
+	return (print_hexadecimal(num, 0));
 }
 
 /**
- * print_hex - Handle %X format specifiers
+ * print_HEX - Handle %X format specifiers
  * @var: va_list containing the unsigned integer argument
  * Return: Number of characters printed
  */
@@ -58,5 +59,5 @@ int print_HEX(va_list var)
 {
 	unsigned int num = va_arg(var, unsigned int);
 
-	return print_hexadecimal(num, 1);
+	return (print_hexadecimal(num, 1));
 }
