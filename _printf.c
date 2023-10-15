@@ -1,16 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
 /**
- */
-int print_dec(va_list var)
-{
-	int num;
-
-	num = va_arg(var, int);
-	return (print_number(num));
-}
-
-/**
  * _printf - Custom printf function
  * @format: The format string
  * Return: Number of characters printed
@@ -44,7 +34,9 @@ void _handle_percent(const char **format, va_list var, int *count)
 		_putchar('%');
 	}
 	else
+	{
 		_process_format(format, var, count);
+	}
 }
 
 /**
@@ -60,18 +52,21 @@ void _process_format(const char **format, va_list var, int *count)
 	datatype type[] = {
 		{'c', print_char},
 		{'s', print_str},
-		{'d', print_dec},
+		{'d', print_int},
+		{'i', print_int},
+		{'u', print_uint},
+		{'o', print_oct},
+		{'x', print_hex},
+		{'X', print_hex},
 		{'\0', 0}
 	};
-	i = 0;
-	while (type[i].choice)
+	for (i = 0; type[i].choice != '\0'; i++)
 	{
 		if (type[i].choice == **format)
 		{
 			*count += type[i].f(var);
 			return;
 		}
-		i++;
 	}
 }
 
