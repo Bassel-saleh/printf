@@ -11,6 +11,5 @@ int print_char(va_list var)
 
 	c = va_arg(var, int);
 	_putchar(c);
-	_putchar('\0');
 	return (1);
 }
