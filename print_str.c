@@ -2,9 +2,10 @@
 #include <stdarg.h>
 /**
  */
-void print_str(va_list var)
+int print_str(va_list var)
 {
 	char *str;
+	int a = 0;
 	
 	str = va_arg(var, char *);
 	if (str)
@@ -13,6 +14,8 @@ void print_str(va_list var)
 		{
 			_putchar(*str);
 			str++;
+			a++;
 		}
 	}
+	return (a);
 }

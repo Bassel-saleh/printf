@@ -2,12 +2,12 @@
 #include <stdarg.h>
 /**
  */
-int print_dec(va_list var)
+void print_dec(va_list var)
 {
 	int num;
 
 	num = va_arg(var, int);
-	return (print_number(num));
+	print_number(num);
 }
 
 /**
@@ -40,7 +40,7 @@ void _handle_percent(const char **format, va_list var, int *count)
 	(*format)++;
 	if (**format == '%')
 	{
-		(*count) ++;
+		/* (*count)++; */
 		_putchar('%');
 	}
 	else
@@ -53,9 +53,10 @@ void _handle_percent(const char **format, va_list var, int *count)
  * @var: The va_list to access arguments
  * Return: Number of characters printed
  */
-void _process_format(const char **format, va_list var, int *count)
+void _process_format(const char **format, va_list var, int * count)
 {
 	int i;
+	char *str;
 
 	datatype type[] = {
 		{'c', print_char},
@@ -68,8 +69,18 @@ void _process_format(const char **format, va_list var, int *count)
 	{
 		if (type[i].choice == **format)
 		{
-			*count += type[i].f(var);
-			return;
+			if (type[i].choice == 's')
+			{
+				str = va_arg(var, char *);
+				if (str)
+					(*count) += _strlen(str);
+				else
+				{
+					type[i].f(var);
+					(*count)++;
+				}
+				return;
+			}
 		}
 		i++;
 	}
