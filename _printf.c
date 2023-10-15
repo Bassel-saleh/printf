@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+
 /**
  * _printf - Custom printf function
  * @format: The format string
@@ -30,7 +31,7 @@ void _handle_percent(const char **format, va_list var, int *count)
 	(*format)++;
 	if (**format == '%')
 	{
-		(*count) ++;
+		(*count)++;
 		_putchar('%');
 	}
 	else
@@ -43,31 +44,41 @@ void _handle_percent(const char **format, va_list var, int *count)
  * _process_format - Process format specifiers
  * @format: The format string
  * @var: The va_list to access arguments
- * Return: Number of characters printed
+ * @count: Pointer to the character count
  */
 void _process_format(const char **format, va_list var, int *count)
 {
-	int i;
+	char spec = **format;
 
-	datatype type[] = {
-		{'c', print_char},
-		{'s', print_str},
-		{'d', print_int},
-		{'i', print_int},
-		{'u', print_uint},
-		{'o', print_oct},
-		{'x', print_hex},
-		{'X', print_HEX},
-		{'p', print_pointer},
-		{'\0', 0}
-	};
-	for (i = 0; type[i].choice != '\0'; i++)
+	switch (spec)
 	{
-		if (type[i].choice == **format)
-		{
-			*count += type[i].f(var);
-			return;
-		}
+		case 'c':
+			*count += print_char(var);
+			break;
+		case 's':
+			*count += print_str(var);
+			break;
+		case 'd':
+		case 'i':
+			*count += print_int(var);
+			break;
+		case 'u':
+			*count += print_uint(var);
+			break;
+		case 'o':
+			*count += print_oct(var);
+			break;
+		case 'x':
+			*count += print_hex(var);
+			break;
+		case 'X':
+			*count += print_HEX(var);
+			break;
+		case 'p':
+			*count += print_pointer(var);
+			break;
+		default:
+			*count += _putchar('%');
 	}
 }
 
@@ -84,13 +95,16 @@ int _print_format(const char *format, va_list var)
 	while (*format)
 	{
 		if (*format == '%')
+		{
 			_handle_percent(&format, var, &count);
+		}
 		else
 		{
-			count ++;
+			count++;
 			_putchar(*format);
 		}
 		format++;
 	}
+
 	return (count);
 }
