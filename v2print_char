@@ -1,0 +1,22 @@
+#include <stdlib.h>
+#include "main.h"
+/**
+ * print_c - print char type data
+ * @var: variables datatype list
+ * Return: String of char datatype
+ */
+char *print_char(va_list var)
+{
+	char *str;
+	char l;
+
+	l = va_arg(var, int);
+	if (l == 0)
+		l = '\0';
+	str = malloc(sizeof(char) * 2);
+	if (str == 0)
+		return (0);
+	str[0] = l;
+	str[1] = '\0';
+	return (str);
+}
