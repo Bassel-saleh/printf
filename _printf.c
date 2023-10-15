@@ -55,9 +55,9 @@ void _process_format(const char **format, va_list var, int *count)
 		case 'c':
 			*count += print_char(var);
 			break;
-		case 's':
+		/*case 's':
 			*count += print_str(var);
-			break;
+			break;*/
 		case 'd':
 		case 'i':
 			*count += print_int(var);
