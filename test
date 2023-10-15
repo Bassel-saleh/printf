@@ -5,7 +5,7 @@
 int main()
 {
 	int i, j;
-	char str = 'h';
+	char str = 0;
 
 	i = _printf("%c%c%c", str, str, str);
 	j = printf("%c%c%c", str, str, str);
