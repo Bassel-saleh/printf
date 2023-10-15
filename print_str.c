@@ -8,13 +8,22 @@
 int print_str(va_list var)
 {
 	char *str;
-	int count = 0;
+	int i, count = 0;
+	char *nil = "(null)";
 
 	str = va_arg(var, char *);
-	while (str && *str)
+	if (str == 0)
 	{
-		count += _putchar(*str);
-		str++;
+		for (i = 0; nil[i] != '\0'; i++)
+			count += _putchar(nil[i]);
+	}
+	else
+	{
+		while (str && *str)
+		{
+			count += _putchar(*str);
+			str++;
+		}
 	}
 	return (count);
 }
