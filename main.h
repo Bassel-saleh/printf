@@ -26,7 +26,7 @@ int print_char(va_list var);
 int print_str(va_list var);
 int _putchar(char c);
 int _print_format(const char *format, va_list var);
-void _process_format(const char **format, va_list var, int *count);
+int _process_format(const char **format, va_list var, int *count);
 int print_int(va_list var);
 int print_uint(va_list var);
 int print_oct(va_list var);

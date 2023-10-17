@@ -24,7 +24,7 @@ int _printf(const char *format, ...)
  * @var: The va_list to access arguments
  * @count: Pointer to the character count
  */
-void _process_format(const char **format, va_list var, int *count)
+int _process_format(const char **format, va_list var, int *count)
 {
 	int i;
 
@@ -41,16 +41,17 @@ void _process_format(const char **format, va_list var, int *count)
 		{'R', rot13},
 		{'r', print_rev},
 		{'%', print_percent},
-		{NULL, NULL},
+		{0, 0},
 		};
 	for (i = 0; type[i].choice != '\0'; i++)
 	{
 		if (type[i].choice == **format)
 		{
 			*count += type[i].f(var);
-			return;
+			return (0);
 		}
 	}
+	return (0);
 }
 
 /**
