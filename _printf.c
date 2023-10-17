@@ -41,6 +41,7 @@ void _process_format(const char **format, va_list var, int *count)
 		{'R', rot13},
 		{'r', print_rev},
 		{'%', print_percent},
+		{NULL, NULL},
 		};
 	for (i = 0; type[i].choice != '\0'; i++)
 	{
