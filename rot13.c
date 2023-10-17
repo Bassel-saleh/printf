@@ -17,11 +17,13 @@ int rot13(va_list var)
 		{
 			if (w[i] == rotspeak[j])
 			{
-				w[i] = rotcode[j];
+				_putchar(rotcode[j]);
 				break;
 			}
 		}
-		count += _putchar(w[i]);
+		if (w[i] != rotspeak[j])
+			_putchar(w[i]);
+		count++;
 	}
 	return (count);
 }
