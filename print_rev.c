@@ -1,8 +1,8 @@
 #include "main.h"
 /**
  * print_rev - print a string reversly
- * @s: is the string to be printed
- * Return: no return
+ * @var: specifier list
+ * Return: count number of characters printed
  */
 int print_rev(va_list var)
 {

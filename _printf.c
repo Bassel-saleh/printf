@@ -26,46 +26,29 @@ int _printf(const char *format, ...)
  */
 void _process_format(const char **format, va_list var, int *count)
 {
-	char spec = **format;
+	int i;
 
-	switch (spec)
+	datatype type[] = {
+		{'c', print_char},
+		{'s', print_str},
+		{'d', print_int},
+		{'i', print_int},
+		{'u', print_uint},
+		{'o', print_oct},
+		{'x', print_hex},
+		{'X', print_HEX},
+		{'p', print_pointer},
+		{'R', rot13},
+		{'r', print_rev},
+		{'%', print_percent},
+		};
+	for (i = 0; type[i].choice != '\0'; i++)
 	{
-		case 'c':
-			*count += print_char(var);
-			break;
-		case 's':
-			*count += print_str(var);
-			break;
-		case 'd':
-		case 'i':
-			*count += print_int(var);
-			break;
-		case 'u':
-			*count += print_uint(var);
-			break;
-		case 'o':
-			*count += print_oct(var);
-			break;
-		case 'x':
-			*count += print_hex(var);
-			break;
-		case 'X':
-			*count += print_HEX(var);
-			break;
-		case 'p':
-			*count += print_pointer(var);
-			break;
-		case 'R':
-			*count += rot13(var);
-			break;
-		case 'r':
-			*count += print_rev(var);
-			break;
-		case '%':
-			*count += _putchar('%');
-			break;
-		default:
-			*count += print_char(var);
+		if (type[i].choice == **format)
+		{
+			*count += type[i].f(var);
+			return;
+		}
 	}
 }
 
@@ -99,4 +82,17 @@ int _print_format(const char *format, va_list var)
 		format++;
 	}
 	return (count);
+}
+
+/**
+ * print_percent - print percentage sympol (%)
+ * @var: specifier list
+ * Return: putchar
+ */
+int print_percent(va_list var)
+{
+	(void)va_arg(var, int);
+
+
+	return (_putchar('%'));
 }
