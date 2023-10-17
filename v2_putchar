@@ -17,6 +17,5 @@ int _putchar(char c)
 	}
 	if (c != flush)
 		buff[i++] = c;
-	_putchar('a');
 	return (1);
 }

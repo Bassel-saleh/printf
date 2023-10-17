@@ -19,26 +19,6 @@ int _printf(const char *format, ...)
 }
 
 /**
- * _handle_percent - Handle the '%' character
- * @format: The format string
- * @var: The va_list to access arguments
- * @count: Pointer to the character count
- */
-void _handle_percent(const char **format, va_list var, int *count)
-{
-	(*format)++;
-	if (**format == '%')
-	{
-		(*count)++;
-		_putchar('%');
-	}
-	else
-	{
-		_process_format(format, var, count);
-	}
-}
-
-/**
  * _process_format - Process format specifiers
  * @format: The format string
  * @var: The va_list to access arguments
@@ -78,7 +58,7 @@ void _process_format(const char **format, va_list var, int *count)
 		case 'R':
 			*count += rot13(var);
 			break;
-		default:
+		case '%':
 			*count += _putchar('%');
 	}
 }
@@ -97,7 +77,13 @@ int _print_format(const char *format, va_list var)
 	{
 		if (*format == '%')
 		{
-			_handle_percent(&format, var, &count);
+			format++;
+			if (*format == '\0')
+			{
+				_putchar('%');
+				return (-1);
+			}
+			_process_format(&format, var, &count);
 		}
 		else
 		{
@@ -106,6 +92,5 @@ int _print_format(const char *format, va_list var)
 		}
 		format++;
 	}
-
 	return (count);
 }

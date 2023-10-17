@@ -6,6 +6,7 @@
 
 #define buffsize 1024
 #define flush -1
+
 #define null_s "(null)"
 
 /**
