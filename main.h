@@ -2,7 +2,24 @@
 #define MAIN_H
 
 #include <stdarg.h>
+#include <unistd.h>
 
+#define buffsize 1024
+#define flush -1
+#define null_s "(null)"
+
+/**
+ * struct datatype - struct datatype
+ * @choice: datatype choice
+ * @f: the function to be used
+ */
+typedef struct datatype
+{
+	char choice;
+	int (*f)(va_list);
+} datatype;
+
+int rot13(va_list var);
 int _printf(const char *format, ...);
 int print_char(va_list var);
 int print_str(va_list var);
@@ -21,15 +38,5 @@ int print_unsign(unsigned int n);
 int print_HEX(va_list var);
 int print_pointer(va_list var);
 int print_hexadecimal_padded(unsigned long n, int width);
-
-/**
- * struct datatype - struct datatype
- * @f: the function to be used
- */
-typedef struct datatype
-{
-	char choice;
-	int (*f)(va_list);
-} datatype;
 
 #endif

@@ -1,0 +1,33 @@
+TH _PRINTF 3
+.SH NAME
+test.sh \- formatted output conversion
+.SH SYNOPSIS
+.B #include "main.h"
+.B _printf
+int _printf(const char *restrict format, ...);
+.SH LIBRARY 
+.SH DESCRIPTION
+.B _printf
+prints any string you want and is can handle specifiers to which mean you can add
+variables to your string. char, int, stings and so on.
+.SH Conversion specifiers
+.TP
+.BR c
+prints custom characters
+.TP
+.BR s
+prints custom strings
+.TP
+.BR i
+print integers
+.TP
+.BR d
+prints integers in the form of decimals
+.TP
+.BR o
+prints octal int
+.TP
+.BR p
+prints the address of a variable
+.TP
+.BR 

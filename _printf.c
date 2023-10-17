@@ -75,6 +75,9 @@ void _process_format(const char **format, va_list var, int *count)
 		case 'p':
 			*count += print_pointer(var);
 			break;
+		case 'R':
+			*count += rot13(var);
+			break;
 		default:
 			*count += _putchar('%');
 	}

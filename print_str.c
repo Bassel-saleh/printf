@@ -9,13 +9,12 @@ int print_str(va_list var)
 {
 	char *str;
 	int i, count = 0;
-	char *nil = "(null)";
 
 	str = va_arg(var, char *);
 	if (str == 0)
 	{
-		for (i = 0; nil[i] != '\0'; i++)
-			count += _putchar(nil[i]);
+		for (i = 0; null_s[i] != '\0'; i++)
+			count += _putchar(null_s[i]);
 	}
 	else
 	{
