@@ -23,6 +23,7 @@ int _printf(const char *format, ...)
  * @format: The format string
  * @var: The va_list to access arguments
  * @count: Pointer to the character count
+ * Return: NULL
  */
 int _process_format(const char **format, va_list var, int *count)
 {
