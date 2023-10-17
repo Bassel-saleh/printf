@@ -58,8 +58,14 @@ void _process_format(const char **format, va_list var, int *count)
 		case 'R':
 			*count += rot13(var);
 			break;
+		case 'r':
+			*count += print_rev(var);
+			break;
 		case '%':
 			*count += _putchar('%');
+			break;
+		default:
+			*count += print_char(var);
 	}
 }
 

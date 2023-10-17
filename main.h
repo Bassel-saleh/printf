@@ -39,5 +39,6 @@ int print_unsign(unsigned int n);
 int print_HEX(va_list var);
 int print_pointer(va_list var);
 int print_hexadecimal_padded(unsigned long n, int width);
+int print_rev(va_list);
 
 #endif
