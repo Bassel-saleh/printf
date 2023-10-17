@@ -1,8 +1,8 @@
 #include "main.h"
 /**
  * rot13 - replace some characters in a string to match ROT13
- * @w: is the string to be changed
- * Return: w
+ * @var: is the string to be changed
+ * Return: number of characters printed
  */
 int rot13(va_list var)
 {
