@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+#include "main.h"
+#include <stdarg.h>
+
+int _printf(const char *format, ...);
+
+int main(void)
+{
+	int i, x, y;
+	const char *format = "Testing _printf:\n"
+		"Special characters: \t Tab \n Newline \0 Null character %% Percent sign\n"
+		"ASCII characters: ";
+
+	char result[4096];  /* Create a buffer to store the result */
+	
+	strcpy(result, format);  /* Initialize result with the initial format */
+
+	for (i = 0; i < 128; i++)
+	{
+		char temp[2];
+		temp[0] = i;
+		temp[1] = '\0';
+		strcat(result, temp);  /* Concatenate the character to the result */
+	}
+
+	x = _printf("\n%s\n", result);  /* Print the result using your custom printf */
+	y = printf("\n%s\n", result);
+	printf("Return: %d - %d\n", x, y);
+	return (0);
+}

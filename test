@@ -5,12 +5,12 @@
 int main()
 {
 	int i, j;/*, x = 5;*/
-	char str = 0;
+	char *str = "Hello\0 world";
 
-	i = _printf("\\\\\\\\\\\\\\ sds%c\n", str);
-	j = printf("\\\\\\\\\\\\\\ sds%c\n", str);
-	/*_printf("\\%c\n", str);
-	printf("\\%c\n", str);*/
+	i = _printf("%s\n", str);
+	j = printf("%s\n", str);
+	_printf("%s\n", str);
+	printf("%s\n", str);
 	printf("Returns: %d & %d\n", i, j);
 	return (1);
 }

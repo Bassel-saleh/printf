@@ -10,9 +10,7 @@ int print_char(va_list var)
 	int c;
 
 	c = va_arg(var, int);
-	/*if (c != 0)*/
-	_putchar(c);
-	return (1);
+	return (_putchar(c));
 }
 #include "main.h"
 #include <stdarg.h>

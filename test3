@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include "main.h"
+
+int main() {
+	int num = -42;
+	unsigned int unum = 4294967295;
+	char ch = 'A';
+	char* str = "Custom Printf Test";
+	int customResult;
+	int standardResult;
+
+	printf("Deleted: %%d: %d\n& %%u: %u\n& %%c: %c\n& %s\n", num, unum, ch, str);
+	customResult = _printf("Custom\n");
+	standardResult = printf("Standard\n");
+			/*"%%d: %d\n"*/
+			/*"%%u: %u\n"*/
+			/*"%%c: %c\n"*/
+	if (customResult != standardResult)
+	{
+		printf("Results differ: custom=%d, standard=%d\n", customResult, standardResult);
+	}
+	else
+	{
+		printf("Results match: both printed %d characters\n", customResult);
+	}
+	return (0);
+}
