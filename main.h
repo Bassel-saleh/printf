@@ -3,6 +3,7 @@
 
 #include <stdarg.h>
 #include <unistd.h>
+#include <limits.h>
 
 #define buffsize 1024
 #define flush -1
@@ -20,13 +21,14 @@ typedef struct datatype
 	int (*f)(va_list);
 } datatype;
 
+int handle_specifier(const char **format, va_list var, int *count);
 int rot13(va_list var);
 int _printf(const char *format, ...);
 int print_char(va_list var);
 int print_str(va_list var);
 int _putchar(char c);
-int _print_format(const char *format, va_list var);
-int _process_format(const char **format, va_list var, int *count);
+int print_format(const char *format, va_list var);
+int process_format(const char **format, va_list var, int *count);
 int print_int(va_list var);
 int print_uint(va_list var);
 int print_oct(va_list var);

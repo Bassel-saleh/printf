@@ -12,7 +12,8 @@ int _printf(const char *format, ...)
 	if (format)
 	{
 		va_start(var, format);
-		count = _print_format(format, var);
+		count = print_format(format, var);
+		_putchar(flush);
 		va_end(var);
 	}
 	return (count);
@@ -28,7 +29,7 @@ int _printf(const char *format, ...)
 int _process_format(const char **format, va_list var, int *count)
 {
 	int i;
-
+	char spec = **format;
 	datatype type[] = {
 		{'c', print_char},
 		{'s', print_str},
@@ -49,10 +50,12 @@ int _process_format(const char **format, va_list var, int *count)
 		if (type[i].choice == **format)
 		{
 			*count += type[i].f(var);
-			return (0);
+			return (1);
 		}
 	}
-	return (0);
+	count += _putchar('%');
+	count += _putchar(spec);
+	return (1);
 }
 
 /**
@@ -61,7 +64,7 @@ int _process_format(const char **format, va_list var, int *count)
  * @var: The va_list to access arguments
  * Return: Number of characters printed
  */
-int _print_format(const char *format, va_list var)
+int print_format(const char *format, va_list var)
 {
 	int count = 0;
 
@@ -95,7 +98,6 @@ int _print_format(const char *format, va_list var)
 int print_percent(va_list var)
 {
 	(void)va_arg(var, int);
-
 
 	return (_putchar('%'));
 }

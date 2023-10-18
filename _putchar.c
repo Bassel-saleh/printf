@@ -6,5 +6,15 @@
  */
 int _putchar(char c)
 {
-	return (write(1, &c, 1));
+	static int i;
+	static char buff[buffsize];
+
+	if (c == flush || i >= buffsize)
+	{
+		write(1, buff, i);
+		i = 0;
+	}
+	if (c != flush)
+	buff[i++] = c;
+	return (1);
 }
