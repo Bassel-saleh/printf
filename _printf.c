@@ -61,7 +61,7 @@ int _process_format(const char **format, va_list var, int *count)
 }
 
 /**
- * _print_format - Handle the format string and print characters
+ * print_format - Handle the format string and print characters
  * @format: The format string
  * @var: The va_list to access arguments
  * Return: Number of characters printed
