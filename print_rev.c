@@ -9,24 +9,15 @@ int print_rev(va_list var)
 	char *s = va_arg(var, char *);
 	int i, count;
 
-	if (var == 0)
+	i = 0;
+	while (s[i])
 	{
-		i = 0;
-		while (s[i])
-		{
-			i++;
-		}
-		while (i--)
-		{
-			_putchar(s[i]);
-			count++;
-		}
+		i++;
 	}
-	else
+	while (i--)
 	{
-		_putchar('%');
-		_putchar('r');
-		return (2);
+		_putchar(s[i]);
+		count++;
 	}
 	return (count);
 }
