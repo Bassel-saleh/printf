@@ -9,11 +9,9 @@ int _printf(const char *format, ...)
 	va_list var;
 	int count = 0;
 
-	va_start(var, format);
-	if (!format || (format[0] == '%' && !format[1]))
-		return (-1);
 	if (format)
 	{
+		va_start(var, format);
 		count = print_format(format, var);
 		_putchar(flush);
 		va_end(var);
